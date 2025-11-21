@@ -167,6 +167,16 @@ body {
     color: var(--orange);
 }
 
+.contact-details ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-details ul li a:hover {
+    color: var(--orange);
+}
+
 
 /*- RIGHT COLUMN STYLES --*/
 .profile-section {
