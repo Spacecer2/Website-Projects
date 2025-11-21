@@ -33,14 +33,14 @@
     left: 0;
     width: 1px;
     height: 1px;
-    background: white;
+    background: var(--white);
     box-shadow: 
         /* Small stars */
-        100px 100px #FFF, 200px 200px #FFF, 300px 300px #FFF, 400px 400px #FFF, 500px 500px #FFF, 
-        600px 600px #FFF, 700px 700px #FFF, 800px 800px #FFF, 900px 900px #FFF, 1000px 1000px #FFF,
+        100px 100px var(--white), 200px 200px var(--white), 300px 300px var(--white), 400px 400px var(--white), 500px 500px var(--white), 
+        600px 600px var(--white), 700px 700px var(--white), 800px 800px var(--white), 900px 900px var(--white), 1000px 1000px var(--white),
         /* More small stars for density */
-        50px 150px #FFF, 150px 250px #FFF, 250px 350px #FFF, 350px 450px #FFF, 450px 550px #FFF,
-        550px 650px #FFF, 650px 750px #FFF, 750px 850px #FFF, 850px 950px #FFF, 950px 50px #FFF;
+        50px 150px var(--white), 150px 250px var(--white), 250px 350px var(--white), 350px 450px var(--white), 450px 550px var(--white),
+        550px 650px var(--white), 650px 750px var(--white), 750px 850px var(--white), 850px 950px var(--white), 950px 50px var(--white);
     animation: animStar 50s linear infinite;
 }
 
@@ -51,14 +51,14 @@
     left: 0;
     width: 2px;
     height: 2px;
-    background: white;
+    background: var(--white);
     box-shadow: 
         /* Medium stars */
-        100px 500px #FFF, 200px 100px #FFF, 300px 700px #FFF, 400px 200px #FFF, 500px 800px #FFF,
-        600px 300px #FFF, 700px 900px #FFF, 800px 400px #FFF, 900px 0px #FFF, 1000px 600px #FFF,
+        100px 500px var(--white), 200px 100px var(--white), 300px 700px var(--white), 400px 200px var(--white), 500px 800px var(--white),
+        600px 300px var(--white), 700px 900px var(--white), 800px 400px var(--white), 900px 0px var(--white), 1000px 600px var(--white),
         /* More medium stars for density */
-        150px 300px #FFF, 250px 50px #FFF, 350px 600px #FFF, 450px 150px #FFF, 550px 750px #FFF,
-        650px 250px #FFF, 750px 850px #FFF, 850px 350px #FFF, 950px 900px #FFF, 50px 400px #FFF;
+        150px 300px var(--white), 250px 50px var(--white), 350px 600px var(--white), 450px 150px var(--white), 550px 750px var(--white),
+        650px 250px var(--white), 750px 850px var(--white), 850px 350px var(--white), 950px 900px var(--white), 50px 400px var(--white);
     animation: animStar2 100s linear infinite;
 }
 
@@ -165,6 +165,10 @@ body {
 @keyframes animate-skill-bar {
     from {
         width: 0;
+    }
+    to {
+        /* Width will be set by inline style, this just ensures transition */
+        width: var(--skill-width, 100%); 
     }
 }
 
@@ -400,7 +404,13 @@ body {
     height: 100%;
     background: linear-gradient(90deg, var(--orange), var(--cyan));
     box-shadow: 0 0 0.3125rem var(--cyan), 0 0 0.625rem var(--cyan);
-    animation: animate-skill-bar 2s ease-out;
+    /* animation: animate-skill-bar 2s ease-out; */ /* Removed for JS control */
+    width: 0; /* Initial state for animation */
+    transition: width 2s ease-out; /* Add transition for smooth animation */
+}
+
+.skill-bar.animate {
+    animation: animate-skill-bar 2s ease-out forwards;
 }
 
 /* --- PROJECTS SECTION --- */

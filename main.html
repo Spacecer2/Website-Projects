@@ -142,6 +142,19 @@
 
     <button id="back-to-top">⬆</button>
 
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-project-image" src="" alt="Project Image">
+            <h3 id="modal-project-title"></h3>
+            <p id="modal-project-description"></p>
+            <div class="modal-links">
+                <a id="modal-live-link" href="#" target="_blank">View Live</a>
+                <a id="modal-github-link" href="#" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Datetime Display Functionality
@@ -231,6 +244,31 @@
             if (window.pageYOffset === 0) {
                 backToTopButton.style.display = 'none';
             }
+
+            // Interactive Skill Bars Functionality
+            const skillBars = document.querySelectorAll('.skill-bar');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.5 // trigger when 50% of the item is visible
+            };
+
+            const skillObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBar = entry.target;
+                        const skillWidth = skillBar.style.width; // Get inline width
+                        skillBar.style.setProperty('--skill-width', skillWidth); // Set CSS custom property
+                        skillBar.classList.add('animate');
+                        observer.unobserve(skillBar); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            skillBars.forEach(skillBar => {
+                skillObserver.observe(skillBar);
+            });
         });
     </script>
 </body>
