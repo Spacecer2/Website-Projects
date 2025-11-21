@@ -112,7 +112,7 @@ body {
 
 .right-column {
     position: relative;
-    display: flex; /* Added flexbox to manage children layout */
+    display: flex;
     flex-direction: column;
 }
 
@@ -182,11 +182,14 @@ body {
 
 
 /*- RIGHT COLUMN STYLES --*/
+.profile-text-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
 .profile-section {
-    position: relative; /* Changed from absolute */
-    top: auto; /* Removed fixed top */
-    left: auto; /* Removed fixed left */
-    margin-bottom: 1rem; /* Add some space below the image */
+    position: relative;
+    margin-bottom: 0;
 }
 
 .profile-pic {
@@ -198,17 +201,16 @@ body {
 }
 
 .text-block {
-    position: relative; /* Changed from absolute */
-    top: auto; /* Removed fixed top */
-    left: auto; /* Removed fixed left */
+    position: absolute;
+    top: 1.5rem; /* Overlap from top */
+    left: 8rem; /* Overlap from left (image width + some spacing) */
     font-size: clamp(0.8em, 1vw + 0.2em, 0.9em);
     line-height: 1.5;
     padding: 0.625rem;
-    max-width: 100%; /* Changed to 100% for responsiveness */
+    width: calc(100% - 8rem); /* Adjust width to not overflow */
+    max-width: 17.5rem; /* Keep text block from becoming too wide */
     background-color: rgba(4, 11, 49, 0.8);
     border-left: 2px solid var(--orange);
-    margin-top: -3.5rem; /* Negative margin to overlap with the image */
-    margin-left: 3rem; /* Push text block to the right a bit */
 }
 
 .signature {
