@@ -139,5 +139,76 @@
     </div>
 
     <button id="back-to-top">⬆</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search Bar Functionality
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const projectCards = document.querySelectorAll('.project-card');
+            const skillItems = document.querySelectorAll('.skill-item');
+            const experienceSections = document.querySelectorAll('.experience-section');
+
+            function filterElements() {
+                const query = searchInput.value.toLowerCase();
+
+                // Filter Project Cards
+                projectCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Filter Skill Items
+                skillItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Filter Experience Sections (titles and content)
+                experienceSections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+
+            searchButton.addEventListener('click', filterElements);
+            searchInput.addEventListener('keyup', filterElements);
+
+            // Back to Top Button Functionality
+            const backToTopButton = document.getElementById('back-to-top');
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            backToTopButton.addEventListener('click', scrollToTop);
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 200) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+            if (window.pageYOffset === 0) {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
