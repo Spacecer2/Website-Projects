@@ -14,6 +14,54 @@
     --white: #ffffff;
 }
 
+/*- STARFIELD --*/
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.starfield::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    background: white;
+    box-shadow: 
+        /* Small stars */
+        100px 100px #FFF, 200px 200px #FFF, 300px 300px #FFF, 400px 400px #FFF, 500px 500px #FFF, 
+        600px 600px #FFF, 700px 700px #FFF, 800px 800px #FFF, 900px 900px #FFF, 1000px 1000px #FFF,
+        /* More small stars for density */
+        50px 150px #FFF, 150px 250px #FFF, 250px 350px #FFF, 350px 450px #FFF, 450px 550px #FFF,
+        550px 650px #FFF, 650px 750px #FFF, 750px 850px #FFF, 850px 950px #FFF, 950px 50px #FFF;
+    animation: animStar 50s linear infinite;
+}
+
+.starfield::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 
+        /* Medium stars */
+        100px 500px #FFF, 200px 100px #FFF, 300px 700px #FFF, 400px 200px #FFF, 500px 800px #FFF,
+        600px 300px #FFF, 700px 900px #FFF, 800px 400px #FFF, 900px 0px #FFF, 1000px 600px #FFF,
+        /* More medium stars for density */
+        150px 300px #FFF, 250px 50px #FFF, 350px 600px #FFF, 450px 150px #FFF, 550px 750px #FFF,
+        650px 250px #FFF, 750px 850px #FFF, 850px 350px #FFF, 950px 900px #FFF, 50px 400px #FFF;
+    animation: animStar2 100s linear infinite;
+}
+
 /*- DATETIME DISPLAY --*/
 .datetime-display {
     color: var(--cyan);
@@ -85,6 +133,24 @@ body {
 }
 
 /*- ANIMATIONS --*/
+@keyframes animStar {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+@keyframes animStar2 {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
