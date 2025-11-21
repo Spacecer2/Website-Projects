@@ -122,20 +122,35 @@
             <div class="project-card">
                 <img src="https://via.placeholder.com/300x200" alt="Project 1">
                 <h3>Project Title 1</h3>
-                <p>A short description of the project goes here. Focusing on the technologies used and the problem solved.</p>
-                <a href="#">View Project</a>
+                <p>A short description of Project 1 goes here. Focusing on the technologies used and the problem solved.</p>
+                <a href="javascript:void(0)"
+                   data-project-image="https://via.placeholder.com/300x200"
+                   data-project-title="Project Title 1"
+                   data-project-description="A short description of Project 1 goes here. Focusing on the technologies used and the problem solved."
+                   data-live-link="https://example.com/project1-live"
+                   data-github-link="https://github.com/your/project1">View Project</a>
             </div>
             <div class="project-card">
                 <img src="https://via.placeholder.com/300x200" alt="Project 2">
                 <h3>Project Title 2</h3>
-                <p>A short description of the project goes here. Focusing on the technologies used and the problem solved.</p>
-                <a href="#">View Project</a>
+                <p>A short description of Project 2 goes here. Focusing on the technologies used and the problem solved.</p>
+                <a href="javascript:void(0)"
+                   data-project-image="https://via.placeholder.com/300x200"
+                   data-project-title="Project Title 2"
+                   data-project-description="A short description of Project 2 goes here. Focusing on the technologies used and the problem solved."
+                   data-live-link="https://example.com/project2-live"
+                   data-github-link="https://github.com/your/project2">View Project</a>
             </div>
             <div class="project-card">
                 <img src="https://via.placeholder.com/300x200" alt="Project 3">
                 <h3>Project Title 3</h3>
-                <p>A short description of the project goes here. Focusing on the technologies used and the problem solved.</p>
-                <a href="#">View Project</a>
+                <p>A short description of Project 3 goes here. Focusing on the technologies used and the problem solved.</p>
+                <a href="javascript:void(0)"
+                   data-project-image="https://via.placeholder.com/300x200"
+                   data-project-title="Project Title 3"
+                   data-project-description="A short description of Project 3 goes here. Focusing on the technologies used and the problem solved."
+                   data-live-link="https://example.com/project3-live"
+                   data-github-link="https://github.com/your/project3">View Project</a>
             </div>
         </div>
     </div>
@@ -268,6 +283,52 @@
 
             skillBars.forEach(skillBar => {
                 skillObserver.observe(skillBar);
+            });
+
+            // Project Card Modal Functionality
+            const projectModal = document.getElementById('project-modal');
+            const closeButton = projectModal.querySelector('.close-button');
+            const modalProjectImage = document.getElementById('modal-project-image');
+            const modalProjectTitle = document.getElementById('modal-project-title');
+            const modalProjectDescription = document.getElementById('modal-project-description');
+            const modalLiveLink = document.getElementById('modal-live-link');
+            const modalGithubLink = document.getElementById('modal-github-link');
+            const projectLinks = document.querySelectorAll('.project-card a');
+
+            function openModal(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                const link = event.currentTarget;
+                const projectImage = link.dataset.projectImage;
+                const projectTitle = link.dataset.projectTitle;
+                const projectDescription = link.dataset.projectDescription;
+                const liveLink = link.dataset.liveLink;
+                const githubLink = link.dataset.githubLink;
+
+                modalProjectImage.src = projectImage;
+                modalProjectTitle.textContent = projectTitle;
+                modalProjectDescription.textContent = projectDescription;
+                modalLiveLink.href = liveLink;
+                modalGithubLink.href = githubLink;
+
+                projectModal.style.display = 'flex'; // Show modal
+            }
+
+            function closeModal() {
+                projectModal.style.display = 'none'; // Hide modal
+            }
+
+            projectLinks.forEach(link => {
+                link.addEventListener('click', openModal);
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside of the modal content
+            window.addEventListener('click', function(event) {
+                if (event.target == projectModal) {
+                    closeModal();
+                }
             });
         });
     </script>

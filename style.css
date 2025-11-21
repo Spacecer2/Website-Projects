@@ -500,3 +500,86 @@ body {
     width: 80%;
     max-width: 43.75rem;
 }
+
+/* --- MODAL STYLES --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--dark-blue);
+    margin: auto;
+    padding: 2rem;
+    border: 2px solid var(--cyan);
+    width: 80%;
+    max-width: 40rem;
+    position: relative;
+    box-shadow: 0 0 1rem var(--cyan);
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--orange);
+    margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+    color: var(--orange);
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.modal-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.modal-links a {
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    background-color: var(--orange);
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.modal-links a:hover {
+    background-color: var(--cyan);
+}
+
+.close-button {
+    color: var(--white);
+    font-size: 2rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--orange);
+    text-decoration: none;
+    cursor: pointer;
+}
