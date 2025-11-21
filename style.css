@@ -583,3 +583,43 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* --- CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 0.8rem; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-blue); /* Color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--cyan), var(--orange)); /* Color of the scroll thumb */
+    border-radius: 0.5rem; /* Roundness of the scroll thumb */
+    border: 1px solid var(--dark-blue); /* Space around scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cyan); /* Color of the scroll thumb on hover */
+}
+
+/* --- DOWNLOAD BUTTON --- */
+.download-button {
+    display: block; /* Make it a block element */
+    width: fit-content; /* Adjust width to content */
+    margin: 1.5rem auto 0 auto; /* Center it with top margin */
+    padding: 0.75em 1.5em; /* Padding consistent with modal links */
+    background-color: var(--orange);
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: center; /* Center text within the button */
+    font-size: 1em; /* Consistent font size */
+}
+
+.download-button:hover {
+    background-color: var(--cyan);
+    box-shadow: 0 0 0.5rem var(--cyan), 0 0 1rem var(--cyan);
+}
