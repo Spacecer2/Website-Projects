@@ -135,6 +135,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* To push signature to bottom */
 }
 
 /*- LEFT COLUMN STYLES --*/
@@ -235,9 +236,10 @@ body {
 }
 
 .signature {
-    position: absolute;
-    bottom: 1.25rem;
-    right: 1.25rem;
+    /* Removed absolute positioning */
+    margin-top: auto; /* Pushes it to the bottom */
+    align-self: flex-end; /* Aligns to the right */
+    margin-right: 1.25rem; /* Some spacing from the right edge */
     font-family: 'Dancing Script', cursive;
     font-size: clamp(1.8em, 2vw + 0.5em, 2em);
     color: var(--orange);
