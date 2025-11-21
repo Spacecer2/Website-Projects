@@ -1,0 +1,193 @@
+/*- FONTS --*/
+@font-face {
+  font-family: "Orbitron";
+  src: url("./Orbitron-VariableFont_wght.ttf") format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/*- COLOR PALETTE --*/
+:root {
+    --dark-blue: #040b31;
+    --cyan: #00f6ff;
+    --orange: #ffc900;
+    --white: #ffffff;
+}
+
+/*- GENERAL STYLES --*/
+body {
+    background-color: var(--dark-blue);
+    font-family: "Orbitron", sans-serif;
+    color: var(--white);
+    margin: 0;
+    padding: 20px;
+}
+
+/*- MAIN CONTAINERS --*/
+.portfolio-container, .experience-container {
+    width: 90%;
+    max-width: 800px;
+    border: 2px solid var(--cyan);
+    padding: 15px;
+    position: relative;
+    border-image: linear-gradient(to bottom, var(--cyan), var(--orange), var(--cyan)) 1;
+    margin: 40px auto;
+}
+
+.portfolio-container {
+    height: 90vh;
+    max-height: 700px;
+    display: flex;
+}
+
+
+/*- COLUMNS --*/
+.left-column, .right-column {
+    width: 50%;
+    padding: 10px;
+    z-index: 2;
+}
+
+.right-column {
+    position: relative;
+}
+
+/*- LEFT COLUMN STYLES --*/
+.main-title {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.main-title .orange-hash {
+    color: var(--orange);
+}
+
+.shape-container {
+    position: relative;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.shape {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background-color: var(--cyan);
+}
+
+.shape-1 { transform: skewX(-35deg); top: 0; left: 0; }
+.shape-2 { transform: skewX(-35deg); top: 10px; left: 10px; background-color: var(--orange); }
+
+.contact-details, .attachments {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 15px;
+    border-left: 2px solid var(--cyan);
+    font-size: 0.9em;
+}
+
+.contact-details h2, .attachments h2 {
+    color: var(--orange);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.contact-details ul, .attachments ul { list-style: none; padding-left: 0; font-size: 0.8em; }
+.contact-details li, .attachments li { margin-bottom: 8px; }
+
+
+/*- RIGHT COLUMN STYLES --*/
+.profile-section {
+    position: absolute;
+    top: 40px;
+    left: -50px;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    border: 2px solid var(--cyan);
+}
+
+.text-block {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    padding: 10px;
+    max-width: 280px;
+    background-color: rgba(4, 11, 49, 0.8);
+    border-left: 2px solid var(--orange);
+}
+
+.signature {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: var(--orange);
+}
+
+/* --- EXPERIENCE SECTION --- */
+.experience-container {
+    padding: 20px;
+}
+
+.experience-section {
+    margin-bottom: 30px;
+    border-left: 2px solid var(--cyan);
+    padding-left: 20px;
+    position: relative;
+}
+
+.experience-section::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    background-color: var(--dark-blue);
+}
+
+
+.experience-section h2 { font-size: 1.2em; color: var(--orange); }
+.experience-section h3 { font-size: 1em; margin-top: -10px; }
+.experience-section h4 { font-size: 0.9em; color: var(--cyan); margin-top: -10px; }
+.experience-section ul { list-style: none; padding-left: 10px; font-size: 0.9em; }
+.experience-section li { margin-bottom: 5px; }
+
+
+/*- DECORATIVE ELEMENTS --*/
+.portfolio-container::before, .portfolio-container::after, .experience-container::before, .experience-container::after, .top-right-decoration, .bottom-left-decoration {
+    content: '';
+    position: absolute;
+    background-color: var(--dark-blue);
+    z-index: 1;
+}
+
+.portfolio-container::before, .experience-container::before { top: -2px; left: 25%; width: 20%; height: 4px; }
+.portfolio-container::after, .experience-container::after { bottom: -2px; right: 25%; width: 20%; height: 4px; }
+
+.top-right-decoration, .bottom-left-decoration { width: 80px; height: 80px; }
+
+.top-right-decoration {
+    top: -10px; right: -10px;
+    border-top: 3px solid var(--cyan);
+    border-right: 3px solid var(--cyan);
+    transform: skewX(35deg);
+}
+
+.bottom-left-decoration {
+    bottom: -10px; left: -10px;
+    border-bottom: 3px solid var(--orange);
+    border-left: 3px solid var(--orange);
+    transform: skewX(35deg);
+}
