@@ -238,14 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
    * Initializes the dynamic project loading from the backend.
    */
   const initProjectLoader = () => {
-    const localProjectsCheckbox = document.getElementById(
-      'local-projects-checkbox'
-    );
     const projectGrid = document.querySelector('.project-grid');
 
     const loadProjects = async () => {
       try {
-        const projects = await fetchProjects(localProjectsCheckbox.checked);
+        const projects = await fetchProjects();
         renderProjects(projects, projectGrid);
       } catch (error) {
         console.error('Error loading projects:', error);
@@ -254,17 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    localProjectsCheckbox.addEventListener('change', loadProjects);
     loadProjects();
   };
 
   /**
    * Fetches the projects from the API.
-   * @param {boolean} isLocal - Whether to fetch local projects.
    * @returns {Promise<Array<object>>} A promise that resolves to an array of projects.
    */
-  const fetchProjects = async (isLocal) => {
-    const apiUrl = isLocal ? '/api/projects?local=true' : '/api/projects';
+  const fetchProjects = async () => {
+    const apiUrl = '/api/projects';
     const response = await fetch(apiUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

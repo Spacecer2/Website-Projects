@@ -33,33 +33,7 @@ try:
     cache = Cache(app)
     print("Cache configured.")
 
-    # --- DUMMY DATA ---
-    LOCAL_PROJECTS = [
-        {
-            "id": 1,
-            "name": "Local Project 1",
-            "title": "Local/Project1",
-            "description": "This is a description for local project 1. It showcases some amazing features and is a great example of my work.",
-            "github_url": "https://github.com/Local/Project1",
-            "live_link": "https://local-project1.com",
-            "image": None,
-            "stars": 10,
-            "language": "Python",
-            "readme": "# Local Project 1 README\n\nThis is the **README** for Local Project 1.\n\n## Features\n- Feature A\n- Feature B\n\n## Installation\n```bash\npip install local-project1\n```\n"
-        },
-        {
-            "id": 2,
-            "name": "Local Project 2",
-            "title": "Local/Project2",
-            "description": "Another fantastic local project. This one is built with a different tech stack and solves a unique problem.",
-            "github_url": "https://github.com/Local/Project2",
-            "live_link": None,
-            "image": None,
-            "stars": 5,
-            "language": "JavaScript",
-            "readme": "# Local Project 2 README\n\nWelcome to Local Project 2!\n\nThis project focuses on:\n*   Web development\n*   API integration\n\nStay tuned for updates!\n"
-        }
-    ]
+
 
     # --- ROUTES ---
     @app.route('/')
@@ -82,8 +56,7 @@ try:
         If the 'local' query parameter is set to 'true', it returns a list of local projects.
         Otherwise, it fetches the projects from the GitHub API.
         """
-        if request.args.get('local') == 'true':
-            return jsonify(LOCAL_PROJECTS)
+
 
         github_username = request.args.get('username', 'Spacecer2')
         page = request.args.get('page', 1, type=int)
@@ -106,10 +79,7 @@ try:
         If the owner is 'Local', it returns the details of a local project.
         Otherwise, it fetches the project details from the GitHub API.
         """
-        if owner == 'Local':
-            project = next((p for p in LOCAL_PROJECTS if p['name'].replace(' ', '') == repo_name), None)
-            if project:
-                return jsonify(project)
+
 
         project_details = get_repo_details(owner, repo_name)
         if project_details:
