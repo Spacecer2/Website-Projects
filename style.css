@@ -432,19 +432,19 @@ body {
 }
 
 .top-right-decoration {
-  top: -0.625rem;
-  right: -0.625rem;
+  top: -2px; /* Align with border-top */
+  right: -2px; /* Align with border-right */
   border-top: 3px solid var(--cyan);
   border-right: 3px solid var(--cyan);
-  transform: skewX(35deg);
+  transform: none; /* Remove skew for better alignment */
 }
 
 .bottom-left-decoration {
-  bottom: -0.625rem;
-  left: -0.625rem;
+  bottom: -2px; /* Align with border-bottom */
+  left: -2px; /* Align with border-left */
   border-bottom: 3px solid var(--orange);
   border-left: 3px solid var(--orange);
-  transform: skewX(35deg);
+  transform: none; /* Remove skew for better alignment */
 }
 
 /* 13. SKILLS SECTION */
