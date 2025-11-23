@@ -326,9 +326,9 @@ body {
 .text-block {
   position: absolute;
   top: 1.5rem;
-  left: 8rem;
-  width: calc(100% - 8rem);
-  max-width: 17.5rem;
+  left: 30%; /* Changed from 8rem to a percentage */
+  width: calc(100% - 30%); /* Adjusted based on new left value */
+  max-width: 70%; /* Changed from 17.5rem to a percentage */
   padding: 0.625rem;
   background-color: rgba(4, 11, 49, 0.8);
   border-left: 2px solid var(--orange);
