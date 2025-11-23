@@ -1,4 +1,31 @@
-/*- FONTS --*/
+/**
+ * @file This file contains the main CSS styles for the portfolio website.
+ * @author Fabian Hoess
+ *
+ * TABLE OF CONTENTS
+ * -----------------
+ * 1.  FONTS
+ * 2.  COLOR PALETTE
+ * 3.  GENERAL STYLES
+ * 4.  ANIMATIONS
+ * 5.  STARFIELD
+ * 6.  TOP HEADER AREA
+ * 7.  MAIN CONTAINERS
+ * 8.  COLUMNS
+ * 9.  LEFT COLUMN STYLES
+ * 10. RIGHT COLUMN STYLES
+ * 11. EXPERIENCE SECTION
+ * 12. DECORATIVE ELEMENTS
+ * 13. SKILLS SECTION
+ * 14. PROJECTS SECTION
+ * 15. BACK TO TOP BUTTON
+ * 16. SECTION DIVIDER
+ * 17. MODAL STYLES
+ * 18. CUSTOM SCROLLBAR
+ * 19. DOWNLOAD BUTTON
+ */
+
+/* 1. FONTS */
 @font-face {
   font-family: "Orbitron";
   src: url("./Orbitron-VariableFont_wght.ttf") format("truetype");
@@ -6,620 +33,667 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-/*- COLOR PALETTE --*/
+/* 2. COLOR PALETTE */
 :root {
-    --dark-blue: #040b31;
-    --cyan: #00f6ff;
-    --orange: #ffc900;
-    --white: #ffffff;
+  --dark-blue: #040b31;
+  --cyan: #00f6ff;
+  --orange: #ffc900;
+  --white: #ffffff;
 }
 
-/*- STARFIELD --*/
-.starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.starfield::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    background: var(--white);
-    box-shadow: 
-        /* Small stars */
-        100px 100px var(--white), 200px 200px var(--white), 300px 300px var(--white), 400px 400px var(--white), 500px 500px var(--white), 
-        600px 600px var(--white), 700px 700px var(--white), 800px 800px var(--white), 900px 900px var(--white), 1000px 1000px var(--white),
-        /* More small stars for density */
-        50px 150px var(--white), 150px 250px var(--white), 250px 350px var(--white), 350px 450px var(--white), 450px 550px var(--white),
-        550px 650px var(--white), 650px 750px var(--white), 750px 850px var(--white), 850px 950px var(--white), 950px 50px var(--white);
-    animation: animStar 50s linear infinite;
-}
-
-.starfield::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 2px;
-    background: var(--white);
-    box-shadow: 
-        /* Medium stars */
-        100px 500px var(--white), 200px 100px var(--white), 300px 700px var(--white), 400px 200px var(--white), 500px 800px var(--white),
-        600px 300px var(--white), 700px 900px var(--white), 800px 400px var(--white), 900px 0px var(--white), 1000px 600px var(--white),
-        /* More medium stars for density */
-        150px 300px var(--white), 250px 50px var(--white), 350px 600px var(--white), 450px 150px var(--white), 550px 750px var(--white),
-        650px 250px var(--white), 750px 850px var(--white), 850px 350px var(--white), 950px 900px var(--white), 50px 400px var(--white);
-    animation: animStar2 100s linear infinite;
-}
-
-/*- DATETIME DISPLAY --*/
-.datetime-display {
-    color: var(--cyan);
-    font-size: 0.8em; /* Smaller font size */
-    padding: 0.5em 1em; /* Consistent padding with search bar */
-}
-
-/*- SEARCH BAR --*/
-.search-bar {
-    display: flex;
-    justify-content: center;
-    /* margin-bottom will be handled by .top-header-area */
-}
-
-/*- TOP HEADER AREA (new) --*/
-.top-header-area {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem; /* Space below the header area */
-    width: 100%; /* Ensure it takes full width */
-    max-width: 90vw; /* Match main containers' max-width */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem; /* Padding to match main containers */
-    box-sizing: border-box; /* Include padding in width */
-}
-
-.search-bar input {
-    background-color: var(--dark-blue);
-    border: 1px solid var(--cyan);
-    color: var(--white);
-    padding: 0.5em 1em;
-    font-family: "Orbitron", sans-serif;
-    font-size: 0.9em;
-    outline: none;
-    width: 20em;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.search-bar input:focus {
-    border-color: var(--orange);
-    box-shadow: 0 0 0.5rem var(--cyan);
-}
-
-.search-bar button {
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    border: none;
-    padding: 0.5em 1em;
-    font-family: "Orbitron", sans-serif;
-    font-size: 0.9em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-bar button:hover {
-    background-color: var(--cyan);
-}
-
-/*- GENERAL STYLES --*/
+/* 3. GENERAL STYLES */
 body {
-    background-color: var(--dark-blue);
-    font-family: "Orbitron", sans-serif;
-    color: var(--white);
-    margin: 0;
-    padding: 2rem;
-    font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem); /* 14px to 16px */
+  background-color: var(--dark-blue);
+  font-family: "Orbitron", sans-serif;
+  color: var(--white);
+  margin: 0;
+  padding: 2rem;
+  font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
 }
 
-/*- ANIMATIONS --*/
+/* 4. ANIMATIONS */
 @keyframes animStar {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-2000px);
-    }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }
 
 @keyframes animStar2 {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-2000px);
-    }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(1.25rem);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes animate-skill-bar {
-    from {
-        width: 0;
-    }
-    to {
-        /* Width will be set by inline style, this just ensures transition */
-        width: var(--skill-width, 100%); 
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--skill-width, 100%);
+  }
 }
 
-/*- MAIN CONTAINERS --*/
-.portfolio-container, .experience-container, .skills-container, .projects-container {
-    width: 90%;
-    max-width: 90vw;
-    border: 2px solid var(--cyan);
-    padding: 1rem;
-    position: relative;
-    border-image: linear-gradient(to bottom, var(--cyan), var(--orange), var(--cyan)) 1;
-    margin: 2.5rem auto;
-    animation: fadeInUp 1s ease-out;
+/* 5. STARFIELD */
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--white);
+}
+
+.starfield::before {
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    100px 100px var(--white), 200px 200px var(--white), 300px 300px var(--white), 400px 400px var(--white), 500px 500px var(--white),
+    600px 600px var(--white), 700px 700px var(--white), 800px 800px var(--white), 900px 900px var(--white), 1000px 1000px var(--white),
+    50px 150px var(--white), 150px 250px var(--white), 250px 350px var(--white), 350px 450px var(--white), 450px 550px var(--white),
+    550px 650px var(--white), 650px 750px var(--white), 750px 850px var(--white), 850px 950px var(--white), 950px 50px var(--white);
+  animation: animStar 50s linear infinite;
+}
+
+.starfield::after {
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    100px 500px var(--white), 200px 100px var(--white), 300px 700px var(--white), 400px 200px var(--white), 500px 800px var(--white),
+    600px 300px var(--white), 700px 900px var(--white), 800px 400px var(--white), 900px 0px var(--white), 1000px 600px var(--white),
+    150px 300px var(--white), 250px 50px var(--white), 350px 600px var(--white), 450px 150px var(--white), 550px 750px var(--white),
+    650px 250px var(--white), 750px 850px var(--white), 850px 350px var(--white), 950px 900px var(--white), 50px 400px var(--white);
+  animation: animStar2 100s linear infinite;
+}
+
+/* 6. TOP HEADER AREA */
+.top-header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 90vw;
+  margin: 0 auto 1.25rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 20em;
+  padding: 0.5em 1em;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--cyan);
+  color: var(--white);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9em;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0.5rem var(--cyan);
+}
+
+.search-bar button {
+  padding: 0.5em 1em;
+  background-color: var(--orange);
+  border: none;
+  color: var(--dark-blue);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: var(--cyan);
+}
+
+.datetime-display {
+  padding: 0.5em 1em;
+  color: var(--cyan);
+  font-size: 0.8em;
+}
+
+/* 7. MAIN CONTAINERS */
+.portfolio-container,
+.experience-container,
+.skills-container,
+.projects-container {
+  position: relative;
+  width: 90%;
+  max-width: 90vw;
+  margin: 2.5rem auto;
+  padding: 1rem;
+  border: 2px solid var(--cyan);
+  border-image: linear-gradient(to bottom, var(--cyan), var(--orange), var(--cyan)) 1;
+  animation: fadeInUp 1s ease-out;
 }
 
 .portfolio-container {
-    height: 90vh;
-    max-height: 80vh;
-    display: flex;
-}
-.experience-container, .skills-container, .projects-container {
-    padding: 1.25rem;
+  display: flex;
+  height: 90vh;
+  max-height: 80vh;
 }
 
+.experience-container,
+.skills-container,
+.projects-container {
+  padding: 1.25rem;
+}
 
-/*- COLUMNS --*/
-.left-column, .right-column {
-    width: 50%;
-    padding: 0.8em;
-    z-index: 2;
+/* 8. COLUMNS */
+.left-column,
+.right-column {
+  width: 50%;
+  padding: 0.8em;
+  z-index: 2;
 }
 
 .right-column {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* To push signature to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/*- LEFT COLUMN STYLES --*/
+/* 9. LEFT COLUMN STYLES */
 .main-title {
-    font-size: clamp(1.4em, 2vw + 0.5em, 1.6em); /* Dynamic font size */
-    margin-bottom: 0.625rem;
+  margin-bottom: 0.625rem;
+  font-size: clamp(1.4em, 2vw + 0.5em, 1.6em);
 }
 
 .main-title .orange-hash {
-    color: var(--orange);
+  color: var(--orange);
 }
 
 .shape-container {
-    position: relative;
-    height: 1.875rem;
-    margin-left: 0.625rem;
-    margin-bottom: 1.25rem;
+  position: relative;
+  height: 1.875rem;
+  margin-left: 0.625rem;
+  margin-bottom: 1.25rem;
 }
 
 .shape {
-    position: absolute;
-    width: 3.75rem;
-    height: 1.25rem;
-    background-color: var(--cyan);
+  position: absolute;
+  width: 3.75rem;
+  height: 1.25rem;
+  background-color: var(--cyan);
 }
 
-.shape-1 { transform: skewX(-35deg); top: 0; left: 0; }
-.shape-2 { transform: skewX(-35deg); top: 0.625rem; left: 0.625rem; background-color: var(--orange); }
-
-.contact-details, .attachments {
-    margin-bottom: 1.25rem;
-    position: relative;
-    padding-left: 0.9375rem;
-    border-left: 2px solid var(--cyan);
-    font-size: 0.9em;
+.shape-1 {
+  top: 0;
+  left: 0;
+  transform: skewX(-35deg);
 }
 
-.contact-details h2, .attachments h2 {
-    color: var(--orange);
-    font-size: clamp(1em, 1.5vw + 0.2em, 1.1em); /* Dynamic font size */
-    margin-bottom: 0.9375rem;
+.shape-2 {
+  top: 0.625rem;
+  left: 0.625rem;
+  background-color: var(--orange);
+  transform: skewX(-35deg);
 }
 
-.contact-details ul, .attachments ul { list-style: none; padding-left: 0; font-size: 0.8em; }
-.contact-details li, .attachments li { margin-bottom: 0.5rem; }
-
-.contact-details li a {
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.3s;
+.contact-details,
+.attachments {
+  position: relative;
+  margin-bottom: 1.25rem;
+  padding-left: 0.9375rem;
+  border-left: 2px solid var(--cyan);
+  font-size: 0.9em;
 }
 
-.contact-details li a:hover {
-    color: var(--orange);
+.contact-details h2,
+.attachments h2 {
+  margin-bottom: 0.9375rem;
+  color: var(--orange);
+  font-size: clamp(1em, 1.5vw + 0.2em, 1.1em);
 }
 
-.contact-details ul li a {
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.3s;
+.contact-details ul,
+.attachments ul {
+  padding-left: 0;
+  list-style: none;
+  font-size: 0.8em;
 }
 
-.contact-details ul li a:hover {
-    color: var(--orange);
+.contact-details li,
+.attachments li {
+  margin-bottom: 0.5rem;
 }
 
+.contact-details a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
-/*- RIGHT COLUMN STYLES --*/
+.contact-details a:hover {
+  color: var(--orange);
+}
+
+/* 10. RIGHT COLUMN STYLES */
 .profile-text-wrapper {
-    position: relative;
-    margin-bottom: 1rem;
+  position: relative;
+  margin-bottom: 1rem;
 }
 
 .profile-section {
-    position: relative;
-    margin-bottom: 0;
+  position: relative;
+  margin-bottom: 0;
 }
 
 .profile-pic {
-    width: 11.25rem;
-    height: 11.25rem;
-    object-fit: cover;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    border: 2px solid var(--cyan);
+  width: 11.25rem;
+  height: 11.25rem;
+  border: 2px solid var(--cyan);
+  object-fit: cover;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 .text-block {
-    position: absolute;
-    top: 1.5rem; /* Overlap from top */
-    left: 8rem; /* Overlap from left (image width + some spacing) */
-    font-size: clamp(0.8em, 1vw + 0.2em, 0.9em);
-    line-height: 1.5;
-    padding: 0.625rem;
-    width: calc(100% - 8rem); /* Adjust width to not overflow */
-    max-width: 17.5rem; /* Keep text block from becoming too wide */
-    background-color: rgba(4, 11, 49, 0.8);
-    border-left: 2px solid var(--orange);
+  position: absolute;
+  top: 1.5rem;
+  left: 8rem;
+  width: calc(100% - 8rem);
+  max-width: 17.5rem;
+  padding: 0.625rem;
+  background-color: rgba(4, 11, 49, 0.8);
+  border-left: 2px solid var(--orange);
+  font-size: clamp(0.8em, 1vw + 0.2em, 0.9em);
+  line-height: 1.5;
 }
 
 .signature {
-    /* Removed absolute positioning */
-    margin-top: auto; /* Pushes it to the bottom */
-    align-self: flex-end; /* Aligns to the right */
-    margin-right: 1.25rem; /* Some spacing from the right edge */
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.8em, 2vw + 0.5em, 2em);
-    color: var(--orange);
-    transition: text-shadow 0.3s;
+  margin-top: auto;
+  margin-right: 1.25rem;
+  align-self: flex-end;
+  color: var(--orange);
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8em, 2vw + 0.5em, 2em);
+  transition: text-shadow 0.3s;
 }
 
 .signature:hover {
-    text-shadow: 0 0 0.3125rem var(--orange), 0 0 0.625rem var(--orange);
+  text-shadow: 0 0 0.3125rem var(--orange), 0 0 0.625rem var(--orange);
 }
 
-/* --- EXPERIENCE SECTION --- */
-.experience-container {
-    padding: 1.25rem;
-}
-
+/* 11. EXPERIENCE SECTION */
 .experience-section {
-    margin-bottom: 1.875rem;
-    border-left: 2px solid var(--cyan);
-    padding-left: 1.25rem;
-    position: relative;
+  position: relative;
+  margin-bottom: 1.875rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--cyan);
 }
 
 .experience-section::before {
-    content: '';
-    position: absolute;
-    left: -0.4375rem;
-    top: 0.3125rem;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: 50%;
-    border: 2px solid var(--cyan);
-    background-color: var(--dark-blue);
+  content: '';
+  position: absolute;
+  top: 0.3125rem;
+  left: -0.4375rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  background-color: var(--dark-blue);
 }
 
-
-.experience-section h2 { font-size: clamp(1.1em, 1.5vw + 0.2em, 1.2em); color: var(--orange); }
-.experience-section h3 { font-size: clamp(0.9em, 1vw + 0.2em, 1em); margin-top: -0.625rem; }
-.experience-section h4 { font-size: clamp(0.8em, 1vw + 0.1em, 0.9em); color: var(--cyan); margin-top: -0.625rem; }
-.experience-section ul { list-style: none; padding-left: 0.625rem; font-size: 0.9em; }
-.experience-section li { margin-bottom: 0.3125rem; }
-
-
-/*- DECORATIVE ELEMENTS --*/
-.portfolio-container::before, .portfolio-container::after, .experience-container::before, .experience-container::after, .top-right-decoration, .bottom-left-decoration {
-    content: '';
-    position: absolute;
-    background-color: var(--dark-blue);
-    z-index: 1;
+.experience-section h2 {
+  color: var(--orange);
+  font-size: clamp(1.1em, 1.5vw + 0.2em, 1.2em);
 }
 
-.portfolio-container::before, .experience-container::before { top: -0.125rem; left: 25%; width: 20%; height: 0.25rem; }
-.portfolio-container::after, .experience-container::after { bottom: -0.125rem; right: 25%; width: 20%; height: 0.25rem; }
+.experience-section h3 {
+  margin-top: -0.625rem;
+  font-size: clamp(0.9em, 1vw + 0.2em, 1em);
+}
 
-.top-right-decoration, .bottom-left-decoration { width: 5rem; height: 5rem; }
+.experience-section h4 {
+  margin-top: -0.625rem;
+  color: var(--cyan);
+  font-size: clamp(0.8em, 1vw + 0.1em, 0.9em);
+}
+
+.experience-section ul {
+  padding-left: 0.625rem;
+  list-style: none;
+  font-size: 0.9em;
+}
+
+.experience-section li {
+  margin-bottom: 0.3125rem;
+}
+
+/* 12. DECORATIVE ELEMENTS */
+.portfolio-container::before,
+.portfolio-container::after,
+.experience-container::before,
+.experience-container::after,
+.top-right-decoration,
+.bottom-left-decoration {
+  content: '';
+  position: absolute;
+  background-color: var(--dark-blue);
+  z-index: 1;
+}
+
+.portfolio-container::before,
+.experience-container::before {
+  top: -0.125rem;
+  left: 25%;
+  width: 20%;
+  height: 0.25rem;
+}
+
+.portfolio-container::after,
+.experience-container::after {
+  bottom: -0.125rem;
+  right: 25%;
+  width: 20%;
+  height: 0.25rem;
+}
+
+.top-right-decoration,
+.bottom-left-decoration {
+  width: 5rem;
+  height: 5rem;
+}
 
 .top-right-decoration {
-    top: -0.625rem; right: -0.625rem;
-    border-top: 3px solid var(--cyan);
-    border-right: 3px solid var(--cyan);
-    transform: skewX(35deg);
+  top: -0.625rem;
+  right: -0.625rem;
+  border-top: 3px solid var(--cyan);
+  border-right: 3px solid var(--cyan);
+  transform: skewX(35deg);
 }
 
 .bottom-left-decoration {
-    bottom: -0.625rem; left: -0.625rem;
-    border-bottom: 3px solid var(--orange);
-    border-left: 3px solid var(--orange);
-    transform: skewX(35deg);
+  bottom: -0.625rem;
+  left: -0.625rem;
+  border-bottom: 3px solid var(--orange);
+  border-left: 3px solid var(--orange);
+  transform: skewX(35deg);
 }
 
-/* --- SKILLS SECTION --- */
+/* 13. SKILLS SECTION */
 .skill-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.9375rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.9375rem;
 }
 
 .skill-name {
-    width: 6.25rem;
-    font-size: 1em;
-    color: var(--orange);
+  width: 6.25rem;
+  color: var(--orange);
+  font-size: 1em;
 }
 
 .skill-bar-container {
-    width: 100%;
-    height: 1.25rem;
-    background-color: rgba(0, 246, 255, 0.1);
-    border: 1px solid var(--cyan);
-    padding: 0.125rem;
+  width: 100%;
+  height: 1.25rem;
+  padding: 0.125rem;
+  background-color: rgba(0, 246, 255, 0.1);
+  border: 1px solid var(--cyan);
 }
 
 .skill-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--orange), var(--cyan));
-    box-shadow: 0 0 0.3125rem var(--cyan), 0 0 0.625rem var(--cyan);
-    /* animation: animate-skill-bar 2s ease-out; */ /* Removed for JS control */
-    width: 0; /* Initial state for animation */
-    transition: width 2s ease-out; /* Add transition for smooth animation */
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange), var(--cyan));
+  box-shadow: 0 0 0.3125rem var(--cyan), 0 0 0.625rem var(--cyan);
+  transition: width 2s ease-out;
 }
 
 .skill-bar.animate {
-    animation: animate-skill-bar 2s ease-out forwards;
+  animation: animate-skill-bar 2s ease-out forwards;
 }
 
-/* --- PROJECTS SECTION --- */
+/* 14. PROJECTS SECTION */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-    gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .project-card {
-    background-color: rgba(0, 246, 255, 0.05);
-    border: 1px solid var(--cyan);
-    padding: 0.9375rem;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 246, 255, 0.1), rgba(255, 201, 0, 0.1));
+  border: 2px solid var(--cyan);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-0.3125rem);
-    box-shadow: 0 0 0.9375rem var(--cyan);
+  border-color: var(--orange);
+  box-shadow: 0 0 1rem var(--cyan), inset 0 0 1rem rgba(255, 201, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 .project-card img {
-    max-width: 100%;
-    border: 1px solid var(--orange);
-    margin-bottom: 0.625rem;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .project-card h3 {
-    color: var(--orange);
-    font-size: clamp(1.1em, 1.5vw + 0.2em, 1.2em);
-    margin-bottom: 0.625rem;
+  margin: 0.5rem 0;
+  color: var(--cyan);
+  font-size: 1.3rem;
 }
 
 .project-card p {
-    font-size: 0.8em;
-    line-height: 1.5;
-    margin-bottom: 0.9375rem;
+  margin: 1rem 0;
+  color: var(--white);
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .project-card a {
-    display: inline-block;
-    padding: 0.5em 1em;
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 3px;
-    transition: background-color 0.3s;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--orange);
+  border-radius: 4px;
+  color: var(--dark-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .project-card a:hover {
-    background-color: var(--cyan);
+  background-color: var(--cyan);
+  box-shadow: 0 0 0.5rem var(--cyan);
 }
 
-/* --- BACK TO TOP BUTTON --- */
+/* 15. BACK TO TOP BUTTON */
 #back-to-top {
-    position: fixed;
-    bottom: 1.875rem;
-    right: 1.875rem;
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    border: none;
-    border-radius: 50%;
-    width: 3.125rem;
-    height: 3.125rem;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    z-index: 1000;
+  position: fixed;
+  bottom: 1.875rem;
+  right: 1.875rem;
+  width: 3.125rem;
+  height: 3.125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orange);
+  border: none;
+  border-radius: 50%;
+  color: var(--dark-blue);
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  z-index: 1000;
 }
 
 #back-to-top:hover {
-    background-color: var(--cyan);
-    transform: translateY(-0.3125rem);
+  background-color: var(--cyan);
+  transform: translateY(-0.3125rem);
 }
 
-/* --- SECTION DIVIDER --- */
+/* 16. SECTION DIVIDER */
 .section-divider {
-    border: none;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--orange), var(--cyan), transparent);
-    margin: 3.125rem auto;
-    width: 80%;
-    max-width: 43.75rem;
+  width: 80%;
+  max-width: 43.75rem;
+  height: 3px;
+  margin: 3.125rem auto;
+  background: linear-gradient(90deg, transparent, var(--orange), var(--cyan), transparent);
+  border: none;
 }
 
-/* --- MODAL STYLES --- */
+/* 17. MODAL STYLES */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  z-index: 1000;
 }
 
 .modal-content {
-    background-color: var(--dark-blue);
-    margin: auto;
-    padding: 2rem;
-    border: 2px solid var(--cyan);
-    width: 80%;
-    max-width: 40rem;
-    position: relative;
-    box-shadow: 0 0 1rem var(--cyan);
+  position: relative;
+  width: 80%;
+  max-width: 40rem;
+  margin: auto;
+  padding: 2rem;
+  background-color: var(--dark-blue);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 1rem var(--cyan);
 }
 
 .modal-content img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--orange);
-    margin-bottom: 1rem;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--orange);
 }
 
 .modal-content h3 {
-    color: var(--orange);
-    font-size: 1.5em;
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--orange);
+  font-size: 1.5em;
 }
 
 .modal-content p {
-    font-size: 0.9em;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+  line-height: 1.6;
 }
 
 .modal-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .modal-links a {
-    display: inline-block;
-    padding: 0.75em 1.5em;
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 3px;
-    transition: background-color 0.3s;
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  background-color: var(--orange);
+  border-radius: 3px;
+  color: var(--dark-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .modal-links a:hover {
-    background-color: var(--cyan);
+  background-color: var(--cyan);
 }
 
 .close-button {
-    color: var(--white);
-    font-size: 2rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    cursor: pointer;
-    transition: color 0.3s;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: var(--orange);
-    text-decoration: none;
-    cursor: pointer;
+  color: var(--orange);
+  text-decoration: none;
 }
 
-/* --- CUSTOM SCROLLBAR --- */
+/* 18. CUSTOM SCROLLBAR */
 ::-webkit-scrollbar {
-    width: 0.8rem; /* Width of the scrollbar */
+  width: 0.8rem;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--dark-blue); /* Color of the track */
+  background: var(--dark-blue);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, var(--cyan), var(--orange)); /* Color of the scroll thumb */
-    border-radius: 0.5rem; /* Roundness of the scroll thumb */
-    border: 1px solid var(--dark-blue); /* Space around scroll thumb */
+  background: linear-gradient(to bottom, var(--cyan), var(--orange));
+  border: 1px solid var(--dark-blue);
+  border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--cyan); /* Color of the scroll thumb on hover */
+  background: var(--cyan);
 }
 
-/* --- DOWNLOAD BUTTON --- */
+/* 19. DOWNLOAD BUTTON */
 .download-button {
-    display: block; /* Make it a block element */
-    width: fit-content; /* Adjust width to content */
-    margin: 1.5rem auto 0 auto; /* Center it with top margin */
-    padding: 0.75em 1.5em; /* Padding consistent with modal links */
-    background-color: var(--orange);
-    color: var(--dark-blue);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 3px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    text-align: center; /* Center text within the button */
-    font-size: 1em; /* Consistent font size */
+  display: block;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: 0.75em 1.5em;
+  background-color: var(--orange);
+  border-radius: 3px;
+  color: var(--dark-blue);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .download-button:hover {
-    background-color: var(--cyan);
-    box-shadow: 0 0 0.5rem var(--cyan), 0 0 1rem var(--cyan);
+  background-color: var(--cyan);
+  box-shadow: 0 0 0.5rem var(--cyan), 0 0 1rem var(--cyan);
 }

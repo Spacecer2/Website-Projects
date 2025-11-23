@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../Website"
+		},
+		{
+			"path": "../../gemini/learning"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Website"
+	}
+}
