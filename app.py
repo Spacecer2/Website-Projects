@@ -42,7 +42,7 @@ try:
             "description": "This is a description for local project 1. It showcases some amazing features and is a great example of my work.",
             "github_url": "https://github.com/Local/Project1",
             "live_link": "https://local-project1.com",
-            "image": "https://via.placeholder.com/300x200?text=Local+Project+1",
+            "image": None,
             "stars": 10,
             "language": "Python",
             "readme": "# Local Project 1 README\n\nThis is the **README** for Local Project 1.\n\n## Features\n- Feature A\n- Feature B\n\n## Installation\n```bash\npip install local-project1\n```\n"
@@ -54,7 +54,7 @@ try:
             "description": "Another fantastic local project. This one is built with a different tech stack and solves a unique problem.",
             "github_url": "https://github.com/Local/Project2",
             "live_link": None,
-            "image": "https://via.placeholder.com/300x200?text=Local+Project+2",
+            "image": None,
             "stars": 5,
             "language": "JavaScript",
             "readme": "# Local Project 2 README\n\nWelcome to Local Project 2!\n\nThis project focuses on:\n*   Web development\n*   API integration\n\nStay tuned for updates!\n"
