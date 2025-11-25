@@ -205,8 +205,7 @@ body {
 
 .portfolio-container {
   display: flex;
-  height: 90vh;
-  max-height: 80vh;
+  flex-wrap: wrap;
 }
 
 .experience-container,
@@ -216,18 +215,15 @@ body {
 }
 
 /* 8. COLUMNS */
-.left-column,
-.right-column {
-  width: 50%;
+.left-column {
+  flex-basis: 100%;
+  min-width: 300px;
+  flex-grow: 1;
   padding: 0.8em;
   z-index: 2;
 }
 
-.right-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
 
 /* 9. LEFT COLUMN STYLES */
 .main-title {
@@ -305,50 +301,13 @@ body {
 }
 
 /* 10. RIGHT COLUMN STYLES */
-.profile-text-wrapper {
-  position: relative;
-  margin-bottom: 1rem;
-}
 
-.profile-section {
-  position: relative;
-  margin-bottom: 0;
-}
 
-.profile-pic {
-  width: 11.25rem;
-  height: 11.25rem;
-  border: 2px solid var(--cyan);
-  object-fit: cover;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-}
 
-.text-block {
-  position: absolute;
-  top: 1.5rem;
-  left: 30%; /* Changed from 8rem to a percentage */
-  width: calc(100% - 30%); /* Adjusted based on new left value */
-  max-width: 70%; /* Changed from 17.5rem to a percentage */
-  padding: 0.625rem;
-  background-color: rgba(4, 11, 49, 0.8);
-  border-left: 2px solid var(--orange);
-  font-size: clamp(0.8em, 1vw + 0.2em, 0.9em);
-  line-height: 1.5;
-}
 
-.signature {
-  margin-top: auto;
-  margin-right: 1.25rem;
-  align-self: flex-end;
-  color: var(--orange);
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(1.8em, 2vw + 0.5em, 2em);
-  transition: text-shadow 0.3s;
-}
 
-.signature:hover {
-  text-shadow: 0 0 0.3125rem var(--orange), 0 0 0.625rem var(--orange);
-}
+
+
 
 /* 11. EXPERIENCE SECTION */
 .experience-section {
