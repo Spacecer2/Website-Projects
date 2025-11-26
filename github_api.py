@@ -46,6 +46,21 @@ def _get_readme_content(owner, repo_name):
     return ""
 
 
+def _get_repo_languages(owner, repo_name):
+    """
+    Fetches language statistics for a given repository.
+    Returns a dictionary of {language_name: bytes_of_code}.
+    """
+    headers = _default_headers()
+    try:
+        response = requests.get(f"{GITHUB_API_URL}/repos/{owner}/{repo_name}/languages", headers=headers)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching languages for {owner}/{repo_name}: {e}")
+        return {}
+
+
 def _extract_live_link(repo):
     """
     Extracts the live link from the repository's homepage or description.
@@ -115,20 +130,29 @@ def get_paginated_user_repos(username, page=1, per_page=30):
         response.raise_for_status()
         repos = response.json()
 
-        projects = [
-            {
-                "id": r.get('id'),
-                "name": r.get('name'),
-                "title": r.get('full_name'),
-                "description": r.get('description') or 'No description provided.',
-                "github_url": r.get('html_url'),
-                "live_link": r.get('homepage'),
-                "image": f"https://via.placeholder.com/300x200?text={r.get('name')}",
-                "stars": r.get('stargazers_count', 0),
-                "language": r.get('language'),
-            }
-            for r in repos
-        ]
+        projects = []
+        for r in repos:
+            owner = r.get('owner', {}).get('login')
+            repo_name = r.get('name')
+            
+            languages = {}
+            if owner and repo_name:
+                languages = _get_repo_languages(owner, repo_name)
+
+            projects.append(
+                {
+                    "id": r.get('id'),
+                    "name": r.get('name'),
+                    "title": r.get('full_name'),
+                    "description": r.get('description') or 'No description provided.',
+                    "github_url": r.get('html_url'),
+                    "live_link": r.get('homepage'),
+                    "image": f"https://via.placeholder.com/300x200?text={r.get('name')}",
+                    "stars": r.get('stargazers_count', 0),
+                    "language": r.get('language'), # Primary language
+                    "languages": languages, # Detailed language breakdown
+                }
+            )
         return projects
     except requests.exceptions.RequestException as e:
         print(f"Error fetching paginated repos for {username}: {e}")

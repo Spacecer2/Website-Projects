@@ -29,7 +29,7 @@ try:
     # Configure Cache
     print("Configuring cache...")
     app.config['CACHE_TYPE'] = 'SimpleCache'
-    app.config['CACHE_DEFAULT_TIMEOUT'] = 300
+    app.config['CACHE_DEFAULT_TIMEOUT'] = 600
     cache = Cache(app)
     print("Cache configured.")
 
@@ -65,9 +65,15 @@ try:
         projects = cache.memoize(timeout=300)(get_paginated_user_repos)(github_username, page, per_page)
 
         if not projects:
-            return jsonify({"message": "No projects found for the specified user or an error occurred."}),
+            return jsonify({"message": "No projects found for the specified user or an error occurred."}), 404
 
-        return jsonify(projects)
+        # Aggregate language data
+        aggregated_languages = {}
+        for project in projects:
+            for lang, bytes_count in project.get('languages', {}).items():
+                aggregated_languages[lang] = aggregated_languages.get(lang, 0) + bytes_count
+        
+        return jsonify({"projects": projects, "aggregated_languages": aggregated_languages})
 
 
     @app.route('/api/project/<owner>/<repo_name>', methods=['GET'])
@@ -95,7 +101,7 @@ try:
         """
         print("Starting Flask application...")
         # Run on 0.0.0.0 so it's reachable from other devices if needed
-        app.run(host='127.0.0.1', port=5001, debug=True)
+        app.run(host='0.0.0.0', port=5001, debug=False)
         print("Flask application stopped.")
 
 except Exception as e:
